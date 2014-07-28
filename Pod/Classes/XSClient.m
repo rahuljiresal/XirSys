@@ -12,7 +12,7 @@
 
 @interface XSClient ()
 
-@property (nonatomic, strong) XSNetworkRequest *networkRequest;
+@property (nonatomic, strong) XSNetworkRequest *request;
 
 @end
 
@@ -24,7 +24,7 @@
         _username = username;
         _secretKey = secretKey;
         
-        _networkRequest = [[XSNetworkRequest alloc] initWithUsername:_username secretKey:_secretKey];
+        _request = [[XSNetworkRequest alloc] initWithUsername:_username secretKey:_secretKey];
     }
     
     return self;
@@ -37,13 +37,15 @@
 
 - (NSURLSessionDataTask *)listDomainsWithCompletion:(XSArrayCompletion)completion
 {
-    return [self.networkRequest postPath:@"listApplications" parameters:nil completion:^(id response, NSError *error) {
-        NSLog(@"Response: %@", response);
-        
+    NSURLSessionDataTask *task = [self.request postPath:@"listDomains" parameters:nil completion:^(id response, NSError *error) {
         if (completion) {
-            completion(nil, nil);
+            completion([response objectForKey:@"d"], nil);
         }
     }];
+    
+    [task resume];
+    
+    return task;
 }
 
 @end

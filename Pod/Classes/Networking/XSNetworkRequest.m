@@ -15,6 +15,7 @@ NSString * const XSBaseURL = @"https://api.xirsys.com/";
 @property (nonatomic, copy) NSDictionary *credentials;
 
 - (NSURLRequest *)requestWithPath:(NSString *)path parameters:(NSDictionary *)parameters method:(NSString *)method;
+- (NSString *)parameterStringWithParameters:(NSDictionary *)parameters;
 - (NSDictionary *)parametersByMergingCredentials:(NSDictionary *)parameters;
 
 @end
@@ -45,7 +46,8 @@ NSString * const XSBaseURL = @"https://api.xirsys.com/";
     
     NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (completion) {
-            completion(nil, error);
+            id response = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+            completion(response, error);
         }
     }];
     
@@ -58,18 +60,26 @@ NSString * const XSBaseURL = @"https://api.xirsys.com/";
 {
     NSURL *URL = [[NSURL URLWithString:XSBaseURL] URLByAppendingPathComponent:path];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:URL];
-    
-    NSError *error = nil;
-    NSData *JSONData = [NSJSONSerialization dataWithJSONObject:parameters options:kNilOptions error:&error];
-    
-    if (error) {
-        return nil;
-    }
+    NSString *parameterString = [self parameterStringWithParameters:[self parametersByMergingCredentials:parameters]];
     
     [request setHTTPMethod:method];
-    [request setHTTPBody:JSONData];
+    [request setHTTPBody:[parameterString dataUsingEncoding:NSUTF8StringEncoding]];
     
     return [request copy];
+}
+
+- (NSString *)parameterStringWithParameters:(NSDictionary *)parameters
+{
+    NSMutableArray *components = [NSMutableArray array];
+    
+    for (id key in parameters) {
+        id value = [parameters objectForKey:key];
+        
+        NSString *component = [NSString stringWithFormat:@"%@=%@", key, value];
+        [components addObject:component];
+    }
+    
+    return [components componentsJoinedByString:@"&"];
 }
 
 - (NSDictionary *)parametersByMergingCredentials:(NSDictionary *)parameters

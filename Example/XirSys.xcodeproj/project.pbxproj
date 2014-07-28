@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B2F32641985F100005DA139 /* XSClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2F32631985F100005DA139 /* XSClientSpec.m */; };
 		4B88C9031985EC7900A134AD /* XSNetworkRequestSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B88C9021985EC7900A134AD /* XSNetworkRequestSpec.m */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		44D5F56DAB0B40399982266D /* XirSys.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = XirSys.podspec; path = ../XirSys.podspec; sourceTree = "<group>"; };
+		4B2F32631985F100005DA139 /* XSClientSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XSClientSpec.m; sourceTree = "<group>"; };
 		4B88C9021985EC7900A134AD /* XSNetworkRequestSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XSNetworkRequestSpec.m; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* XirSys.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XirSys.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -85,6 +87,7 @@
 			children = (
 				6003F5B6195388D20070C39A /* Supporting Files */,
 				4B88C9021985EC7900A134AD /* XSNetworkRequestSpec.m */,
+				4B2F32631985F100005DA139 /* XSClientSpec.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B2F32641985F100005DA139 /* XSClientSpec.m in Sources */,
 				4B88C9031985EC7900A134AD /* XSNetworkRequestSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

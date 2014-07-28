@@ -24,8 +24,8 @@ describe(@"postPath:parameters:completion:", ^{
     
     it(@"returns an NSURLSessionDataTask", ^{
         NSURLSessionDataTask *task = [request postPath:@"path" parameters:nil completion:nil];
-        
         NSURLRequest *request = task.originalRequest;
+        
         expect(request.URL).to.equal([NSURL URLWithString:@"https://api.xirsys.com/path"]);
     });
 });
