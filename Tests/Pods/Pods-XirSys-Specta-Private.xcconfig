@@ -1,6 +1,0 @@
-#include "Pods-XirSys-Specta.xcconfig"
-FRAMEWORK_SEARCH_PATHS = ${PODS_XIRSYS_SPECTA_FRAMEWORK_SEARCH_PATHS}
-GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/Specta" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/Expecta" "${PODS_ROOT}/Headers/Specta" "${PODS_ROOT}/Headers/XirSys" "${PODS_ROOT}/Headers/XirSys/Model" "${PODS_ROOT}/Headers/XirSys/Networking"
-OTHER_LDFLAGS = -ObjC ${PODS_XIRSYS_SPECTA_OTHER_LDFLAGS}
-PODS_ROOT = ${SRCROOT}

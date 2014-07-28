@@ -1,5 +1,0 @@
-#include "Pods-XirSys-XirSys.xcconfig"
-GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/XirSys" "${PODS_ROOT}/BuildHeaders/XirSys/Model" "${PODS_ROOT}/BuildHeaders/XirSys/Networking" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/Expecta" "${PODS_ROOT}/Headers/Specta" "${PODS_ROOT}/Headers/XirSys" "${PODS_ROOT}/Headers/XirSys/Model" "${PODS_ROOT}/Headers/XirSys/Networking"
-OTHER_LDFLAGS = -ObjC
-PODS_ROOT = ${SRCROOT}
