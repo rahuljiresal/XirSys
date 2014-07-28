@@ -54,12 +54,14 @@
     
     NSURLSessionDataTask *task = [self.request postPath:@"getIceServers" parameters:parameters completion:^(id response, NSError *error) {
         if (completion) {
-            NSArray *servers = [response valueForKeyPath:@"d.iceServers"];
+            id servers = [response valueForKeyPath:@"d.iceServers"];
             NSMutableArray *serverObjects = [NSMutableArray array];
             
-            for (NSDictionary *serverJSON in servers) {
-                XSServer *server = [[XSServer alloc] initWithJSON:serverJSON];
-                [serverObjects addObject:server];
+            if (servers && servers != [NSNull null]) {
+                for (NSDictionary *serverJSON in servers) {
+                    XSServer *server = [[XSServer alloc] initWithJSON:serverJSON];
+                    [serverObjects addObject:server];
+                }
             }
             
             completion([serverObjects copy], error);
