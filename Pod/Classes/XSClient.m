@@ -30,9 +30,36 @@
     return self;
 }
 
-- (NSURLSessionDataTask *)getTokenForDomain:(NSString *)domain application:(XSApplication *)application room:(NSString *)room secure:(BOOL)secure
+- (NSURLSessionDataTask *)getTokenForDomain:(NSString *)domain application:(NSString *)application room:(NSString *)room secure:(BOOL)secure completion:(XSObjectCompletion)completion
 {
-    return nil;
+    NSString *secureString = secure ? @"1" : @"0";
+    NSDictionary *parameters = @{ @"domain": domain, @"application": application, @"room": room, @"secure": secureString };
+    
+    NSURLSessionDataTask *task = [self.request postPath:@"getToken" parameters:parameters completion:^(id response, NSError *error) {
+        if (completion) {
+            completion([response objectForKey:@"d"], error);
+        }
+    }];
+    
+    [task resume];
+    
+    return task;
+}
+
+- (NSURLSessionDataTask *)getIceServersForDomain:(NSString *)domain application:(NSString *)application room:(NSString *)room secure:(BOOL)secure completion:(XSObjectCompletion)completion
+{
+    NSString *secureString = secure ? @"1" : @"0";
+    NSDictionary *parameters = @{ @"domain": domain, @"application": application, @"room": room, @"secure": secureString };
+    
+    NSURLSessionDataTask *task = [self.request postPath:@"getIceServers" parameters:parameters completion:^(id response, NSError *error) {
+        if (completion) {
+            completion([response valueForKeyPath:@"d.iceServers"], error);
+        }
+    }];
+    
+    [task resume];
+    
+    return task;
 }
 
 - (NSURLSessionDataTask *)listWebSocketServersWithCompletion:(XSObjectCompletion)completion

@@ -19,10 +19,21 @@ describe(@"initialization", ^{
     });
 });
 
-describe(@"listDomainsWithCompletion:", ^{
+describe(@"getIceServersForDomain:application:room:secure:completion:", ^{
     XSClient *client = [[XSClient alloc] initWithUsername:@"samsymons" secretKey:@"9f85301a-b3fd-4632-915d-a97c9fdb8fa1"];
     
     fit(@"lists the XirSys WebSocket servers", ^AsyncBlock {
+        [client getIceServersForDomain:@"perch.co" application:@"default" room:@"default" secure:NO completion:^(NSArray *servers, NSError *error) {
+            expect(error).to.beNil();
+            done();
+        }];
+    });
+});
+
+describe(@"listDomainsWithCompletion:", ^{
+    XSClient *client = [[XSClient alloc] initWithUsername:@"samsymons" secretKey:@"9f85301a-b3fd-4632-915d-a97c9fdb8fa1"];
+    
+    it(@"lists the XirSys WebSocket servers", ^AsyncBlock {
         [client listWebSocketServersWithCompletion:^(NSDictionary *servers, NSError *error) {
             expect(error).to.beNil();
             done();

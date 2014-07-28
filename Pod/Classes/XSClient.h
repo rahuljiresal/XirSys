@@ -22,6 +22,8 @@ typedef void(^XSArrayCompletion)(NSArray *collection, NSError *error);
 
 - (NSURLSessionDataTask *)getTokenForDomain:(NSString *)domain application:(NSString *)application room:(NSString *)room secure:(BOOL)secure completion:(XSObjectCompletion)completion;
 
+- (NSURLSessionDataTask *)getIceServersForDomain:(NSString *)domain application:(NSString *)application room:(NSString *)room secure:(BOOL)secure completion:(XSObjectCompletion)completion;
+
 /**
  Lists all of the WebSocket servers provided by XirSys.
  */
