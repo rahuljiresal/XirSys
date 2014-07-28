@@ -30,7 +30,7 @@ typedef void(^XSArrayCompletion)(NSArray *collection, NSError *error);
 /**
  List all ICE servers for a given domain.
  */
-- (NSURLSessionDataTask *)getIceServersForDomain:(NSString *)domain application:(NSString *)application room:(NSString *)room secure:(BOOL)secure completion:(XSObjectCompletion)completion;
+- (NSURLSessionDataTask *)getIceServersForDomain:(NSString *)domain application:(NSString *)application room:(NSString *)room secure:(BOOL)secure completion:(XSArrayCompletion)completion;
 
 /**
  Lists all of the WebSocket servers provided by XirSys.

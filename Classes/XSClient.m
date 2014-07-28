@@ -47,7 +47,7 @@
     return task;
 }
 
-- (NSURLSessionDataTask *)getIceServersForDomain:(NSString *)domain application:(NSString *)application room:(NSString *)room secure:(BOOL)secure completion:(XSObjectCompletion)completion
+- (NSURLSessionDataTask *)getIceServersForDomain:(NSString *)domain application:(NSString *)application room:(NSString *)room secure:(BOOL)secure completion:(XSArrayCompletion)completion
 {
     NSString *secureString = secure ? @"1" : @"0";
     NSDictionary *parameters = @{ @"domain": domain, @"application": application, @"room": room, @"secure": secureString };

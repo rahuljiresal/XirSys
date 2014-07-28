@@ -1,6 +1,6 @@
 # XirSys
 
-This project wraps the [XirSys API](http://xirsys.com/api/), allowing it to be used on iOS and OS X.
+An Objective-C wrapper for the [XirSys API](http://xirsys.com/api/), compatible with iOS and OS X.
 
 ## Installation
 
@@ -16,6 +16,17 @@ XirSys is based around the `XSClient` class. `XSClient` takes authentication cre
 
 ```
 XSClient *client = [[XSClient alloc] initWithUsername:@"samsymons" secretKey:@"secretkey"];
+```
+
+## Usage
+
+`XSClient` automatically authenticates requests based on its `username` and `secretKey` properties. Providing you have them set, the client will take care of the authentication process automatically.
+
+```
+XSClient *client = [[XSClient alloc] initWithUsername:@"samsymons" secretKey:@"secretkey"];
+[client getIceServersForDomain:@"perch.co" application:@"default" room:@"default" secure:YES completion:^(NSArray *servers, NSError *error) {
+    NSLog(@"Servers: %@", servers);
+}];
 ```
 
 ## License
