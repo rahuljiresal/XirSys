@@ -16,7 +16,6 @@ typedef void(^XSArrayCompletion)(NSArray *collection, NSError *error);
 @interface XSClient : NSObject
 
 @property (nonatomic, copy) NSString *username;
-
 @property (nonatomic, copy) NSString *secretKey;
 
 - (instancetype)initWithUsername:(NSString *)username secretKey:(NSString *)secretKey;

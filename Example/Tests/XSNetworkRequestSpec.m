@@ -6,39 +6,27 @@
 //  Copyright (c) 2014 Sam Symons. All rights reserved.
 //
 
-#import <XirSys/XSNetworkRequest.h>
+#import <XirSys/Networking/XSNetworkRequest.h>
 
-SpecBegin(InitialSpecs)
+SpecBegin(XSNetworkRequest)
 
-describe(@"these will fail", ^{
-    
-    it(@"can do maths", ^{
-        expect(1).to.equal(2);
-    });
-    
-    it(@"can read", ^{
-        expect(@"number").to.equal(@"string");
-    });
-    
-    it(@"will wait and fail", ^AsyncBlock {
+describe(@"initialization", ^{
+    it(@"is created with the correct properties", ^{
+        XSNetworkRequest *request = [[XSNetworkRequest alloc] initWithUsername:@"samsymons" secretKey:@"secretkey"];
         
+        expect(request.username).to.equal(@"samsymons");
+        expect(request.secretKey).to.equal(@"secretkey");
     });
 });
 
-describe(@"these will pass", ^{
+describe(@"postPath:parameters:completion:", ^{
+    XSNetworkRequest *request = [[XSNetworkRequest alloc] initWithUsername:@"samsymons" secretKey:@"secretkey"];
     
-    it(@"can do maths", ^{
-        expect(1).beLessThan(23);
-    });
-    
-    it(@"can read", ^{
-        expect(@"team").toNot.contain(@"I");
-    });
-    
-    it(@"will wait and succeed", ^AsyncBlock {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            done();
-        });
+    it(@"returns an NSURLSessionDataTask", ^{
+        NSURLSessionDataTask *task = [request postPath:@"path" parameters:nil completion:nil];
+        
+        NSURLRequest *request = task.originalRequest;
+        expect(request.URL).to.equal([NSURL URLWithString:@"https://api.xirsys.com/path"]);
     });
 });
 

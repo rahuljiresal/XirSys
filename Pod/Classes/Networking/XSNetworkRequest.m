@@ -8,12 +8,9 @@
 
 #import "XSNetworkRequest.h"
 
-NSString * const XSBaseURL = @"";
+NSString * const XSBaseURL = @"https://api.xirsys.com/";
 
 @interface XSNetworkRequest ()
-
-@property (nonatomic, copy) NSString *username;
-@property (nonatomic, copy) NSString *secretKey;
 
 @property (nonatomic, copy) NSDictionary *credentials;
 
@@ -43,8 +40,14 @@ NSString * const XSBaseURL = @"";
 {
     NSParameterAssert(path);
     
-    NSURLRequest *request = [self requestWithPath:path parameters:parameters method:@"POST"];
-    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request];
+    NSDictionary *requestParameters = [self parametersByMergingCredentials:parameters];
+    NSURLRequest *request = [self requestWithPath:path parameters:requestParameters method:@"POST"];
+    
+    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (completion) {
+            completion(nil, error);
+        }
+    }];
     
     return task;
 }
