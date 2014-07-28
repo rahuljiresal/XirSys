@@ -11,8 +11,6 @@
 typedef void(^XSObjectCompletion)(id object, NSError *error);
 typedef void(^XSArrayCompletion)(NSArray *collection, NSError *error);
 
-@class XSApplication;
-
 @interface XSClient : NSObject
 
 @property (nonatomic, copy) NSString *username;

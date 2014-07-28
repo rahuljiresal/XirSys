@@ -20,7 +20,7 @@ describe(@"initialization", ^{
 });
 
 describe(@"getIceServersForDomain:application:room:secure:completion:", ^{
-    XSClient *client = [[XSClient alloc] initWithUsername:@"samsymons" secretKey:@"9f85301a-b3fd-4632-915d-a97c9fdb8fa1"];
+    XSClient *client = [[XSClient alloc] initWithUsername:@"samsymons" secretKey:@"secretkey"];
     
     fit(@"lists the XirSys WebSocket servers", ^AsyncBlock {
         [client getIceServersForDomain:@"perch.co" application:@"default" room:@"default" secure:NO completion:^(NSArray *servers, NSError *error) {
@@ -31,7 +31,7 @@ describe(@"getIceServersForDomain:application:room:secure:completion:", ^{
 });
 
 describe(@"listDomainsWithCompletion:", ^{
-    XSClient *client = [[XSClient alloc] initWithUsername:@"samsymons" secretKey:@"9f85301a-b3fd-4632-915d-a97c9fdb8fa1"];
+    XSClient *client = [[XSClient alloc] initWithUsername:@"samsymons" secretKey:@"secretkey"];
     
     it(@"lists the XirSys WebSocket servers", ^AsyncBlock {
         [client listWebSocketServersWithCompletion:^(NSDictionary *servers, NSError *error) {
@@ -42,7 +42,7 @@ describe(@"listDomainsWithCompletion:", ^{
 });
 
 describe(@"listDomainsWithCompletion:", ^{
-    XSClient *client = [[XSClient alloc] initWithUsername:@"samsymons" secretKey:@"9f85301a-b3fd-4632-915d-a97c9fdb8fa1"];
+    XSClient *client = [[XSClient alloc] initWithUsername:@"samsymons" secretKey:@"secretkey"];
     
     it(@"lists a user's domains", ^AsyncBlock {
         [client listDomainsWithCompletion:^(NSArray *domains, NSError *error) {

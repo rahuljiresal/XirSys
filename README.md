@@ -1,18 +1,14 @@
 # XirSys
 
-[![CI Status](http://img.shields.io/travis/Sam Symons/XirSys.svg?style=flat)](https://travis-ci.org/Sam Symons/XirSys)
-[![Version](https://img.shields.io/cocoapods/v/XirSys.svg?style=flat)](http://cocoadocs.org/docsets/XirSys)
-[![License](https://img.shields.io/cocoapods/l/XirSys.svg?style=flat)](http://cocoadocs.org/docsets/XirSys)
-[![Platform](https://img.shields.io/cocoapods/p/XirSys.svg?style=flat)](http://cocoadocs.org/docsets/XirSys)
-
 ## Usage
 
 ## Installation
 
-XirSys is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+XirSys is available through [CocoaPods](http://cocoapods.org). Add the following line to your Podfile:
 
-    pod "XirSys"
+```
+pod "XirSys"
+```
 
 ## License
 
