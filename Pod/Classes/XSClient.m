@@ -35,11 +35,24 @@
     return nil;
 }
 
+- (NSURLSessionDataTask *)listWebSocketServersWithCompletion:(XSObjectCompletion)completion
+{
+    NSURLSessionDataTask *task = [self.request postPath:@"wsList" parameters:nil completion:^(id response, NSError *error) {
+        if (completion) {
+            completion([response objectForKey:@"d"], error);
+        }
+    }];
+    
+    [task resume];
+    
+    return task;
+}
+
 - (NSURLSessionDataTask *)listDomainsWithCompletion:(XSArrayCompletion)completion
 {
     NSURLSessionDataTask *task = [self.request postPath:@"listDomains" parameters:nil completion:^(id response, NSError *error) {
         if (completion) {
-            completion([response objectForKey:@"d"], nil);
+            completion([response objectForKey:@"d"], error);
         }
     }];
     

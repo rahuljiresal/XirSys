@@ -22,6 +22,17 @@ describe(@"initialization", ^{
 describe(@"listDomainsWithCompletion:", ^{
     XSClient *client = [[XSClient alloc] initWithUsername:@"samsymons" secretKey:@"9f85301a-b3fd-4632-915d-a97c9fdb8fa1"];
     
+    fit(@"lists the XirSys WebSocket servers", ^AsyncBlock {
+        [client listWebSocketServersWithCompletion:^(NSDictionary *servers, NSError *error) {
+            expect(error).to.beNil();
+            done();
+        }];
+    });
+});
+
+describe(@"listDomainsWithCompletion:", ^{
+    XSClient *client = [[XSClient alloc] initWithUsername:@"samsymons" secretKey:@"9f85301a-b3fd-4632-915d-a97c9fdb8fa1"];
+    
     it(@"lists a user's domains", ^AsyncBlock {
         [client listDomainsWithCompletion:^(NSArray *domains, NSError *error) {
             expect(domains).to.contain(@"perch.co");
