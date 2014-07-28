@@ -8,6 +8,8 @@
 
 #import "XSNetworkRequest.h"
 
+NSString * const XSBaseURL = @"";
+
 @interface XSNetworkRequest ()
 
 @property (nonatomic, copy) NSString *username;
@@ -15,6 +17,7 @@
 
 @property (nonatomic, copy) NSDictionary *credentials;
 
+- (NSURLRequest *)requestWithPath:(NSString *)path parameters:(NSDictionary *)parameters method:(NSString *)method;
 - (NSDictionary *)parametersByMergingCredentials:(NSDictionary *)parameters;
 
 @end
@@ -40,16 +43,35 @@
 {
     NSParameterAssert(path);
     
-    return nil;
+    NSURLRequest *request = [self requestWithPath:path parameters:parameters method:@"POST"];
+    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request];
+    
+    return task;
 }
 
 #pragma mark - Private
 
+- (NSURLRequest *)requestWithPath:(NSString *)path parameters:(NSDictionary *)parameters method:(NSString *)method
+{
+    NSURL *URL = [[NSURL URLWithString:XSBaseURL] URLByAppendingPathComponent:path];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:URL];
+    
+    NSError *error = nil;
+    NSData *JSONData = [NSJSONSerialization dataWithJSONObject:parameters options:kNilOptions error:&error];
+    
+    if (error) {
+        return nil;
+    }
+    
+    [request setHTTPMethod:method];
+    [request setHTTPBody:JSONData];
+    
+    return [request copy];
+}
+
 - (NSDictionary *)parametersByMergingCredentials:(NSDictionary *)parameters
 {
-    NSParameterAssert(parameters);
-    
-    NSMutableDictionary *mutableParameters = [parameters mutableCopy];
+    NSMutableDictionary *mutableParameters = parameters ? [parameters mutableCopy] : [NSMutableDictionary dictionary];
     [mutableParameters addEntriesFromDictionary:self.credentials];
     
     return [mutableParameters copy];
