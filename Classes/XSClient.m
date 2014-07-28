@@ -9,6 +9,7 @@
 #import "XSClient.h"
 
 #import "XSNetworkRequest.h"
+#import "XSServer.h"
 
 @interface XSClient ()
 
@@ -53,7 +54,15 @@
     
     NSURLSessionDataTask *task = [self.request postPath:@"getIceServers" parameters:parameters completion:^(id response, NSError *error) {
         if (completion) {
-            completion([response valueForKeyPath:@"d.iceServers"], error);
+            NSArray *servers = [response valueForKeyPath:@"d.iceServers"];
+            NSMutableArray *serverObjects = [NSMutableArray array];
+            
+            for (NSDictionary *serverJSON in servers) {
+                XSServer *server = [[XSServer alloc] initWithJSON:serverJSON];
+                [serverObjects addObject:server];
+            }
+            
+            completion([serverObjects copy], error);
         }
     }];
     

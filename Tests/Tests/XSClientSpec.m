@@ -24,6 +24,7 @@ describe(@"getIceServersForDomain:application:room:secure:completion:", ^{
     
     fit(@"lists the XirSys WebSocket servers", ^AsyncBlock {
         [client getIceServersForDomain:@"perch.co" application:@"default" room:@"default" secure:NO completion:^(NSArray *servers, NSError *error) {
+            NSLog(@"Servers: %@", servers);
             expect(error).to.beNil();
             done();
         }];
