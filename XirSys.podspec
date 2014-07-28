@@ -6,13 +6,13 @@ Pod::Spec.new do |s|
   s.license          = 'MIT'
   s.author           = { "Sam Symons" => "sam@samsymons.com" }
   s.source           = { :git => "https://github.com/samsymons/XirSys.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/sam_symons'
+  s.social_media_url = 'https://twitter.com/sam_symons'
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/*.{h,m}', 'Pod/Classes/**/*.{h,m}'
-  s.header_mappings_dir =  'Pod/Classes'
+  s.source_files = 'Classes/*.{h,m}', 'Classes/**/*.{h,m}'
+  s.header_mappings_dir =  'Classes'
 
-  s.public_header_files = 'Pod/Classes/**/*.h'
+  s.public_header_files = 'Classes/**/*.h'
 end

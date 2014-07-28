@@ -1,1 +1,1 @@
-../../../../Pod/Classes/XSClient.h
+../../../../Classes/XSClient.h

@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/Networking/XSNetworkRequest.h
+../../../../../Classes/Networking/XSNetworkRequest.h
