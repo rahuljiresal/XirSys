@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name             = "xirsys"
+  s.name             = "XirSys"
   s.version          = "0.1.0"
   s.summary          = "An Objective-C client for the XirSys API."
   s.homepage         = "https://github.com/samsymonss/XirSys"
@@ -11,7 +11,8 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '7.0'
   s.requires_arc = true
 
-  s.source_files = 'Pod/Classes'
+  s.source_files = 'Pod/Classes/*.{h,m}', 'Pod/Classes/**/*.{h,m}'
+  s.header_mappings_dir =  'Pod/Classes'
 
   s.public_header_files = 'Pod/Classes/**/*.h'
 end
