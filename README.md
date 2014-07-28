@@ -1,6 +1,6 @@
 # XirSys
 
-## Usage
+This project wraps the [XirSys API](http://xirsys.com/api/), allowing it to be used on iOS and OS X.
 
 ## Installation
 
