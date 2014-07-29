@@ -8,7 +8,7 @@
 
 @import Foundation;
 
-typedef void(^XSCompletion)(id response, NSError *error);
+typedef void(^XSNetworkCompletion)(id response, NSError *error);
 
 @interface XSNetworkRequest : NSObject
 
@@ -22,6 +22,6 @@ typedef void(^XSCompletion)(id response, NSError *error);
  
  @note This does not start the data task.
  */
-- (NSURLSessionDataTask *)postPath:(NSString *)path parameters:(NSDictionary *)parameters completion:(XSCompletion)completion;
+- (NSURLSessionDataTask *)postPath:(NSString *)path parameters:(NSDictionary *)parameters completion:(XSNetworkCompletion)completion;
 
 @end

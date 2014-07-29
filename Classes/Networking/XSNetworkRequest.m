@@ -37,7 +37,7 @@ NSString * const XSBaseURL = @"https://api.xirsys.com/";
     return self;
 }
 
-- (NSURLSessionDataTask *)postPath:(NSString *)path parameters:(NSDictionary *)parameters completion:(XSCompletion)completion
+- (NSURLSessionDataTask *)postPath:(NSString *)path parameters:(NSDictionary *)parameters completion:(XSNetworkCompletion)completion
 {
     NSParameterAssert(path);
     

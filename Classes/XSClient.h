@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void(^XSCompletion)(NSError *error);
 typedef void(^XSObjectCompletion)(id object, NSError *error);
 typedef void(^XSArrayCompletion)(NSArray *collection, NSError *error);
 
@@ -41,5 +42,20 @@ typedef void(^XSArrayCompletion)(NSArray *collection, NSError *error);
  Lists all of the domains available to your account.
  */
 - (NSURLSessionDataTask *)listDomainsWithCompletion:(XSArrayCompletion)completion;
+
+/**
+ Creates a new domain in an account.
+ */
+- (NSURLSessionDataTask *)addDomain:(NSString *)domain completion:(XSCompletion)completion;
+
+/**
+ Creates a new application in a domain.
+ */
+- (NSURLSessionDataTask *)addApplication:(NSString *)application toDomain:(NSString *)domain completion:(XSCompletion)completion;
+
+/**
+ Creates a new room in an application.
+ */
+- (NSURLSessionDataTask *)addRoom:(NSString *)domain toApplication:(NSString *)application inRoom:(NSString *)room completion:(XSCompletion)completion;
 
 @end

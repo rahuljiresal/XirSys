@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Sam Symons. All rights reserved.
 //
 
+#import <Specta/Specta.h>
+#import <Expecta/Expecta.h>
 #import <XirSys/XSClient.h>
 
 SpecBegin(XSClient)

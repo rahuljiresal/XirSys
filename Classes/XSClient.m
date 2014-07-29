@@ -15,6 +15,8 @@
 
 @property (nonatomic, strong) XSNetworkRequest *request;
 
+- (NSURLSessionDataTask *)basicRequestWithPath:(NSString *)path parameters:(NSDictionary *)parameters completion:(XSCompletion)completion;
+
 @end
 
 @implementation XSClient
@@ -91,6 +93,39 @@
     NSURLSessionDataTask *task = [self.request postPath:@"listDomains" parameters:nil completion:^(id response, NSError *error) {
         if (completion) {
             completion([response objectForKey:@"d"], error);
+        }
+    }];
+    
+    [task resume];
+    
+    return task;
+}
+
+- (NSURLSessionDataTask *)addDomain:(NSString *)domain completion:(XSCompletion)completion
+{
+    NSDictionary *parameters = @{ @"domain": domain };
+    return [self basicRequestWithPath:@"addDomain" parameters:parameters completion:completion];
+}
+
+- (NSURLSessionDataTask *)addApplication:(NSString *)application toDomain:(NSString *)domain completion:(XSCompletion)completion
+{
+    NSDictionary *parameters = @{ @"domain": domain, @"application": application };
+    return [self basicRequestWithPath:@"addApplication" parameters:parameters completion:completion];
+}
+
+- (NSURLSessionDataTask *)addRoom:(NSString *)domain toApplication:(NSString *)application inRoom:(NSString *)room completion:(XSCompletion)completion
+{
+    NSDictionary *parameters = @{ @"domain": domain, @"application": application, @"room": room };
+    return [self basicRequestWithPath:@"addRoom" parameters:parameters completion:completion];
+}
+
+#pragma mark - Private
+
+- (NSURLSessionDataTask *)basicRequestWithPath:(NSString *)path parameters:(NSDictionary *)parameters completion:(XSCompletion)completion
+{
+    NSURLSessionDataTask *task = [self.request postPath:path parameters:parameters completion:^(id response, NSError *error) {
+        if (completion) {
+            completion(error);
         }
     }];
     
