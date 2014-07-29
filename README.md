@@ -22,6 +22,8 @@ XSClient *client = [[XSClient alloc] initWithUsername:@"samsymons" secretKey:@"s
 
 `XSClient` automatically authenticates requests based on its `username` and `secretKey` properties. Providing you have them set, the client will take care of the authentication process automatically.
 
+Here's how you would get a list of servers for a given domain:
+
 ```
 XSClient *client = [[XSClient alloc] initWithUsername:@"samsymons" secretKey:@"secretkey"];
 [client getIceServersForDomain:@"perch.co" application:@"default" room:@"default" secure:YES completion:^(NSArray *servers, NSError *error) {
