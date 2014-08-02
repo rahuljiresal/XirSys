@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.name             = "XirSys"
   s.version          = "0.1.0"
   s.summary          = "An Objective-C client for the XirSys API."
-  s.homepage         = "https://github.com/samsymonss/XirSys"
+  s.homepage         = "https://github.com/samsymons/XirSys"
   s.license          = 'MIT'
   s.author           = { "Sam Symons" => "sam@samsymons.com" }
   s.source           = { :git => "https://github.com/samsymons/XirSys.git", :tag => s.version.to_s }
