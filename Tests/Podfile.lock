@@ -1,7 +1,7 @@
 PODS:
   - Expecta (0.3.1)
   - Specta (0.2.1)
-  - XirSys (0.1.0)
+  - XirSys (0.1.1)
 
 DEPENDENCIES:
   - Expecta
@@ -15,6 +15,6 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
   Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
-  XirSys: 335ff3472afec554f48a3ae045530f41e02c4dc0
+  XirSys: 6c524cd82bdc5c72763fd6d44581dcb8f3b934ef
 
 COCOAPODS: 0.33.1
