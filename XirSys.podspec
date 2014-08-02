@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "XirSys"
-  s.version          = "0.1.0"
+  s.version          = "0.1.1"
   s.summary          = "An Objective-C client for the XirSys API."
   s.homepage         = "https://github.com/samsymons/XirSys"
   s.license          = 'MIT'
@@ -8,7 +8,8 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/samsymons/XirSys.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/sam_symons'
 
-  s.platform     = :ios, '7.0'
+  s.ios.deployment_target = '7.0'
+  s.osx.deployment_target = '10.8'
   s.requires_arc = true
 
   s.source_files = 'Classes/*.{h,m}', 'Classes/**/*.{h,m}'
