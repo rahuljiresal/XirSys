@@ -26,12 +26,12 @@ typedef void(^XSArrayCompletion)(NSArray *collection, NSError *error);
 
 - (instancetype)initWithUsername:(NSString *)username secretKey:(NSString *)secretKey;
 
-- (NSURLSessionDataTask *)getTokenForDomain:(NSString *)domain application:(NSString *)application room:(NSString *)room secure:(BOOL)secure completion:(XSObjectCompletion)completion;
+- (NSURLSessionDataTask *)getTokenForDomain:(NSString *)domain application:(NSString *)application room:(NSString *)room username:(NSString *)username secure:(BOOL)secure completion:(XSObjectCompletion)completion;
 
 /**
  List all ICE servers for a given domain.
  */
-- (NSURLSessionDataTask *)getIceServersForDomain:(NSString *)domain application:(NSString *)application room:(NSString *)room secure:(BOOL)secure completion:(XSArrayCompletion)completion;
+- (NSURLSessionDataTask *)getIceServersForDomain:(NSString *)domain application:(NSString *)application room:(NSString *)room username:(NSString *)username secure:(BOOL)secure completion:(XSArrayCompletion)completion;
 
 /**
  Lists all of the WebSocket servers provided by XirSys.
