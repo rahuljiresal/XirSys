@@ -25,7 +25,7 @@ describe(@"getIceServersForDomain:application:room:secure:completion:", ^{
     XSClient *client = [[XSClient alloc] initWithUsername:@"samsymons" secretKey:@"secretkey"];
     
     fit(@"lists the XirSys WebSocket servers", ^AsyncBlock {
-        [client getIceServersForDomain:@"perch.co" application:@"default" room:@"default" secure:NO completion:^(NSArray *servers, NSError *error) {
+        [client getIceServersForDomain:@"perch.co" application:@"default" room:@"default" username:@"samsymons" secure:NO completion:^(NSArray *servers, NSError *error) {
             NSLog(@"Servers: %@", servers);
             expect(error).to.beNil();
             done();
