@@ -39,22 +39,34 @@ NSString * const XSBaseURL = @"https://api.xirsys.com/";
 
 - (NSURLSessionDataTask *)postPath:(NSString *)path parameters:(NSDictionary *)parameters completion:(XSNetworkCompletion)completion
 {
+    return [self method:@"POST" path:path parameters:parameters completion:completion];
+}
+
+- (NSURLSessionDataTask *)getPath:(NSString *)path parameters:(NSDictionary *)parameters completion:(XSNetworkCompletion)completion
+{
+    return [self method:@"GET" path:path parameters:parameters completion:completion];
+}
+
+#pragma mark - Private
+
+- (NSURLSessionDataTask *)method:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters completion:(XSNetworkCompletion)completion
+{
     NSParameterAssert(path);
-    
+
     NSDictionary *requestParameters = [self parametersByMergingCredentials:parameters];
-    NSURLRequest *request = [self requestWithPath:path parameters:requestParameters method:@"POST"];
-    
+    NSURLRequest *request = [self requestWithPath:path parameters:requestParameters method:method];
+
     NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (completion) {
             id response = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
             completion(response, error);
         }
     }];
-    
+
+    task.priority = NSURLSessionTaskPriorityHigh;
+
     return task;
 }
-
-#pragma mark - Private
 
 - (NSURLRequest *)requestWithPath:(NSString *)path parameters:(NSDictionary *)parameters method:(NSString *)method
 {
