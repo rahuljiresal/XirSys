@@ -7,15 +7,19 @@
 //
 
 #import <XirSys/Networking/XSNetworkRequest.h>
+#import <Specta/Specta.h>
+#import <Keys/TestsKeys.h>
 
 SpecBegin(XSNetworkRequest)
 
+TestsKeys *keys = [[TestsKeys alloc] init];
+
 describe(@"initialization", ^{
     it(@"is created with the correct properties", ^{
-        XSNetworkRequest *request = [[XSNetworkRequest alloc] initWithUsername:@"samsymons" secretKey:@"secretkey"];
+        XSNetworkRequest *request = [[XSNetworkRequest alloc] initWithUsername:keys.xirSysUsername secretKey:keys.xirSysSecretKey];
         
-        expect(request.username).to.equal(@"samsymons");
-        expect(request.secretKey).to.equal(@"secretkey");
+        expect(request.username).to.equal(keys.xirSysUsername);
+        expect(request.secretKey).to.equal(keys.xirSysSecretKey);
     });
 });
 

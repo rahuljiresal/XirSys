@@ -1,5 +1,6 @@
 plugin 'cocoapods-keys', {
   project: 'Tests',
+  target: 'XirSys',
   keys: [
     'XirSysUsername',
     'XirSysSecretKey'
