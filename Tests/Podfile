@@ -1,3 +1,9 @@
+plugin 'cocoapods-keys', {
+  project: 'Tests',
+  keys: [
+    'XirSysUsername',
+    'XirSysSecretKey'
+  ]}
 
 target 'XirSys', :exclusive => true do
   pod 'XirSys', :path => "../"
