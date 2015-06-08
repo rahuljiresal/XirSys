@@ -8,11 +8,11 @@
 
 #import <XirSys/Networking/XSNetworkRequest.h>
 #import <Specta/Specta.h>
-#import <Keys/TestsKeys.h>
+#import <Keys/XirSysKeys.h>
 
 SpecBegin(XSNetworkRequest)
 
-TestsKeys *keys = [[TestsKeys alloc] init];
+XirSysKeys *keys = [[XirSysKeys alloc] init];
 
 describe(@"initialization", ^{
     it(@"is created with the correct properties", ^{

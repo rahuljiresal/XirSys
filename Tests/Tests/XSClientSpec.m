@@ -9,11 +9,11 @@
 #import <Specta/Specta.h>
 #import <Expecta/Expecta.h>
 #import <XirSys/XSClient.h>
-#import <Keys/TestsKeys.h>
+#import <Keys/XirSysKeys.h>
 
 SpecBegin(XSClient)
 
-TestsKeys *keys = [[TestsKeys alloc] init];
+XirSysKeys *keys = [[XirSysKeys alloc] init];
 XSClient *client = [[XSClient alloc] initWithUsername:keys.xirSysUsername secretKey:keys.xirSysSecretKey];
 
 describe(@"initialization", ^{
