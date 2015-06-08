@@ -104,7 +104,9 @@ NSString * const XSErrorDomain = @"com.xirsys.error";
     NSError *error = nil;
     
     if (statusCode >= 300) {
-        error = [NSError errorWithDomain:XSErrorDomain code:statusCode userInfo:response];
+        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: [response objectForKey:@"e"], @"status": @(statusCode) };
+        
+        error = [NSError errorWithDomain:XSErrorDomain code:statusCode userInfo:userInfo];
     }
     
     return error;
