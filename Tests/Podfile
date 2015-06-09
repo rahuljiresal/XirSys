@@ -1,7 +1,14 @@
+plugin 'cocoapods-keys', {
+  project: 'XirSys',
+  target: 'XirSys',
+  keys: [
+    'XirSysUsername',
+    'XirSysSecretKey'
+  ]}
 
 target 'XirSys', :exclusive => true do
   pod 'XirSys', :path => "../"
 
-  pod 'Specta', '~> 0.2.1'
+  pod 'Specta'
   pod 'Expecta'
 end
