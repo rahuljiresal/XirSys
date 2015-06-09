@@ -26,7 +26,7 @@ describe(@"initialization", ^{
 describe(@"getIceServersForDomain:application:room:secure:completion:", ^{
     it(@"lists the XirSys WebSocket servers", ^{
         waitUntil(^(DoneCallback done) {
-            [client getIceServersForDomain:@"perch.co" application:@"default" room:@"default" username:@"samsymons" secure:NO completion:^(NSArray *servers, NSError *error) {                
+            [client getIceServersForDomain:@"perch.co" application:@"default" room:@"default" username:keys.xirSysUsername secure:NO completion:^(NSArray *servers, NSError *error) {
                 expect(error).to.beNil();
                 done();
             }];
@@ -37,7 +37,7 @@ describe(@"getIceServersForDomain:application:room:secure:completion:", ^{
         waitUntil(^(DoneCallback done) {
             XSClient *badClient = [[XSClient alloc] initWithUsername:@"username" secretKey:@"password"];
             
-            [badClient getIceServersForDomain:@"perch.co" application:@"default" room:@"default" username:@"samsymons" secure:NO completion:^(NSArray *servers, NSError *error) {
+            [badClient getIceServersForDomain:@"perch.co" application:@"default" room:@"default" username:@"username" secure:NO completion:^(NSArray *servers, NSError *error) {
                 expect(servers.count).to.equal(0);
                 expect(error).toNot.beNil();
                 
