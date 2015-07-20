@@ -8,7 +8,7 @@
 
 #import "XSNetworkRequest.h"
 
-NSString * const XSBaseURL = @"https://api.xirsys.com/";
+NSString * const XSBaseURL = @"https://service.xirsys.com/";
 NSString * const XSErrorDomain = @"com.xirsys.error";
 
 @interface XSNetworkRequest ()

@@ -14,8 +14,6 @@ typedef void(^XSArrayCompletion)(NSArray *collection, NSError *error);
 
 typedef NS_ENUM(NSUInteger, XSSignalingType) {
     XSSignalingTypePeer,
-    XSSignalingTypePublish,
-    XSSignalingTypeSubscribe
 };
 
 @interface XSClient : NSObject
@@ -34,19 +32,16 @@ typedef NS_ENUM(NSUInteger, XSSignalingType) {
 
 - (NSURLSessionDataTask *)getTokenForDomain:(NSString *)domain application:(NSString *)application room:(NSString *)room username:(NSString *)username secure:(BOOL)secure completion:(XSObjectCompletion)completion;
 
-- (NSURLSessionDataTask *)getTokenForDomain:(NSString *)domain application:(NSString *)application room:(NSString *)room username:(NSString *)username secure:(BOOL)secure signalType:(XSSignalingType)type completion:(XSObjectCompletion)completion;
-
 /**
  List all ICE servers for a given domain.
  */
 - (NSURLSessionDataTask *)getIceServersForDomain:(NSString *)domain application:(NSString *)application room:(NSString *)room username:(NSString *)username secure:(BOOL)secure completion:(XSArrayCompletion)completion;
 
-- (NSURLSessionDataTask *)getIceServersForDomain:(NSString *)domain application:(NSString *)application room:(NSString *)room username:(NSString *)username secure:(BOOL)secure timeout:(NSTimeInterval)timeout completion:(XSArrayCompletion)completion;
-
 /**
- Lists the subscription URL(s) for published streams in a given room.
+ List all ICE servers for a given domain.
+ @timeout Timeout interval for the ICE Credentials. Maximum of 30 minutes.
  */
-- (NSURLSessionDataTask *)getSubscriptionsForDomain:(NSString *)domain application:(NSString *)application room:(NSString *)room completion:(XSObjectCompletion)completion;
+- (NSURLSessionDataTask *)getIceServersForDomain:(NSString *)domain application:(NSString *)application room:(NSString *)room username:(NSString *)username secure:(BOOL)secure timeout:(NSTimeInterval)timeout completion:(XSArrayCompletion)completion;
 
 /**
  Lists all of the WebSocket servers provided by XirSys.

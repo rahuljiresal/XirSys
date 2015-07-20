@@ -46,16 +46,12 @@
 
 - (NSURLSessionDataTask *)getTokenForDomain:(NSString *)domain application:(NSString *)application room:(NSString *)room username:(NSString *)username secure:(BOOL)secure signalType:(XSSignalingType)type completion:(XSObjectCompletion)completion
 {
+    NSAssert(type == XSSignalingTypePeer, @"Signaling type %lu not supported.", (unsigned long)type);
+
     NSString *secureString = secure ? @"1" : @"0";
     NSDictionary *parameters = nil;
 
-    if (type == XSSignalingTypePeer) {
-        parameters = @{ @"domain": domain, @"application": application, @"room": room, @"username": username, @"secure": secureString };
-    }
-    else {
-        NSString *signalString = type == XSSignalingTypePublish ? @"publish" : @"subscribe";
-        parameters = @{ @"domain": domain, @"application": application, @"room": room, @"username": username, @"secure": secureString, @"type": signalString};
-    }
+    parameters = @{ @"domain": domain, @"application": application, @"room": room, @"username": username, @"secure": secureString };
 
     NSURLSessionDataTask *task = [self.request postPath:@"getToken" parameters:parameters completion:^(id response, NSError *error) {
         if (completion) {
@@ -109,12 +105,6 @@
     [task resume];
 
     return task;
-}
-
-- (NSURLSessionDataTask *)getSubscriptionsForDomain:(NSString *)domain application:(NSString *)application room:(NSString *)room completion:(XSObjectCompletion)completion
-{
-    NSDictionary *parameters = @{ @"domain": domain, @"application": application, @"room": room };
-    return [self basicGetRequestWithPath:@"subscribe" parameters:parameters objectCompletion:completion];
 }
 
 - (NSURLSessionDataTask *)listWebSocketServersWithCompletion:(XSObjectCompletion)completion
