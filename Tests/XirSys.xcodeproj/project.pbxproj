@@ -14,6 +14,7 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		7C54BC5770014EFBA48CF1CF /* libPods-XirSys.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C81F4763C2CB438BB2142A7F /* libPods-XirSys.a */; };
+		D0BAD2FA3316EECF35954D4F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B7752CA76C57F32917B794 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		C81F4763C2CB438BB2142A7F /* libPods-XirSys.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XirSys.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C1A536F2AC4FE2A1D60536 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		EFB5B4CA84D64084895512C5 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		F7B7752CA76C57F32917B794 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +47,7 @@
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
 				7C54BC5770014EFBA48CF1CF /* libPods-XirSys.a in Frameworks */,
+				D0BAD2FA3316EECF35954D4F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +82,7 @@
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
 				C81F4763C2CB438BB2142A7F /* libPods-XirSys.a */,
+				F7B7752CA76C57F32917B794 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -247,6 +251,7 @@
 /* Begin XCBuildConfiguration section */
 		6003F5BD195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57C9664BD5FDE052BEECE36A /* Pods-XirSys.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -286,6 +291,7 @@
 		};
 		6003F5BE195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2B9E030E616D93353ED03DE /* Pods-XirSys.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

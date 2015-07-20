@@ -2,6 +2,8 @@
 
 An Objective-C wrapper for the [XirSys API](http://xirsys.com/api/), compatible with iOS and OS X.
 
+**Note: This project is not intended for production use. It is not feature complete or extensively tested.**
+
 ## Installation
 
 XirSys is available through [CocoaPods](http://cocoapods.org). Add the following line to your Podfile, then run `pod install`:

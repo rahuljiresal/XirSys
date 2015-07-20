@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "XirSys"
-  s.version          = "0.2"
+  s.version          = "0.3"
   s.summary          = "An Objective-C client for the XirSys API."
   s.homepage         = "https://github.com/samsymons/XirSys"
   s.license          = 'MIT'

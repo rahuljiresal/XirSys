@@ -9,6 +9,7 @@
 #import "XSNetworkRequest.h"
 
 NSString * const XSBaseURL = @"https://api.xirsys.com/";
+NSString * const XSErrorDomain = @"com.xirsys.error";
 
 @interface XSNetworkRequest ()
 
@@ -58,8 +59,15 @@ NSString * const XSBaseURL = @"https://api.xirsys.com/";
 
     NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (completion) {
-            id response = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-            completion(response, error);
+            NSDictionary *response = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+            NSError *error = [self errorFromResponse:response];
+            
+            if (error) {
+                completion(nil, error);
+            }
+            else {
+                completion(response, nil);
+            }
         }
     }];
 
@@ -100,6 +108,20 @@ NSString * const XSBaseURL = @"https://api.xirsys.com/";
     [mutableParameters addEntriesFromDictionary:self.credentials];
     
     return [mutableParameters copy];
+}
+
+- (NSError *)errorFromResponse:(NSDictionary *)response
+{
+    NSUInteger statusCode = [[response objectForKey:@"s"] unsignedIntegerValue];
+    NSError *error = nil;
+    
+    if (statusCode >= 300) {
+        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: [response objectForKey:@"e"], @"status": @(statusCode) };
+        
+        error = [NSError errorWithDomain:XSErrorDomain code:statusCode userInfo:userInfo];
+    }
+    
+    return error;
 }
 
 @end
