@@ -2,17 +2,17 @@ PODS:
   - Expecta (1.0.0)
   - Keys (1.0.0)
   - Specta (1.0.1)
-  - XirSys (0.3)
+  - XirSys (0.4)
 
 DEPENDENCIES:
   - Expecta
-  - Keys (from `Pods/CocoaPodsKeys/`)
+  - Keys (from `Pods/CocoaPodsKeys`)
   - Specta
   - XirSys (from `../`)
 
 EXTERNAL SOURCES:
   Keys:
-    :path: Pods/CocoaPodsKeys/
+    :path: Pods/CocoaPodsKeys
   XirSys:
     :path: "../"
 
@@ -20,6 +20,6 @@ SPEC CHECKSUMS:
   Expecta: 32604574add2c46a36f8d2f716b6c5736eb75024
   Keys: 7d2ff6ff42f6903358267ce56e9392f83c31acfe
   Specta: 097be314a75de103703a3bf9a529dc1a398509d7
-  XirSys: 542a6e665b875fd01d519a09a11455b9fd42a556
+  XirSys: 0ea604c4b995f7005ba07a6ffd40675a93430b5d
 
-COCOAPODS: 0.37.1
+COCOAPODS: 0.37.2
