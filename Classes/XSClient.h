@@ -12,6 +12,10 @@ typedef void(^XSCompletion)(NSError *error);
 typedef void(^XSObjectCompletion)(id object, NSError *error);
 typedef void(^XSArrayCompletion)(NSArray *collection, NSError *error);
 
+typedef NS_ENUM(NSUInteger, XSSignalingType) {
+    XSSignalingTypePeer,
+};
+
 @interface XSClient : NSObject
 
 /**
@@ -34,6 +38,12 @@ typedef void(^XSArrayCompletion)(NSArray *collection, NSError *error);
 - (NSURLSessionDataTask *)getIceServersForDomain:(NSString *)domain application:(NSString *)application room:(NSString *)room username:(NSString *)username secure:(BOOL)secure completion:(XSArrayCompletion)completion;
 
 /**
+ List all ICE servers for a given domain.
+ @timeout Timeout interval for the ICE Credentials. Maximum of 30 minutes.
+ */
+- (NSURLSessionDataTask *)getIceServersForDomain:(NSString *)domain application:(NSString *)application room:(NSString *)room username:(NSString *)username secure:(BOOL)secure timeout:(NSTimeInterval)timeout completion:(XSArrayCompletion)completion;
+
+/**
  Lists all of the WebSocket servers provided by XirSys.
  */
 - (NSURLSessionDataTask *)listWebSocketServersWithCompletion:(XSObjectCompletion)completion;
@@ -42,6 +52,11 @@ typedef void(^XSArrayCompletion)(NSArray *collection, NSError *error);
  Lists all of the domains available to your account.
  */
 - (NSURLSessionDataTask *)listDomainsWithCompletion:(XSArrayCompletion)completion;
+
+/**
+ Lists all of the applications available to in a given domain.
+ */
+- (NSURLSessionDataTask *)listApplicationsWithDomain:(NSString *)domain completion:(XSArrayCompletion)completion;
 
 /**
  Creates a new domain in an account.
@@ -56,6 +71,6 @@ typedef void(^XSArrayCompletion)(NSArray *collection, NSError *error);
 /**
  Creates a new room in an application.
  */
-- (NSURLSessionDataTask *)addRoom:(NSString *)domain toApplication:(NSString *)application inRoom:(NSString *)room completion:(XSCompletion)completion;
+- (NSURLSessionDataTask *)addRoom:(NSString *)room toApplication:(NSString *)application inDomain:(NSString *)domain completion:(XSCompletion)completion;
 
 @end
