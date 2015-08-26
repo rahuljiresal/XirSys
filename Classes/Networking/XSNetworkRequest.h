@@ -26,4 +26,6 @@ typedef void(^XSNetworkCompletion)(id response, NSError *error);
 
 - (NSURLSessionDataTask *)getPath:(NSString *)path parameters:(NSDictionary *)parameters completion:(XSNetworkCompletion)completion;
 
+- (NSURLSessionDataTask *)deletePath:(NSString *)path parameters:(NSDictionary *)parameters completion:(XSNetworkCompletion)completion;
+
 @end

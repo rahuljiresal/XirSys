@@ -73,4 +73,17 @@ typedef NS_ENUM(NSUInteger, XSSignalingType) {
  */
 - (NSURLSessionDataTask *)addRoom:(NSString *)room toApplication:(NSString *)application inDomain:(NSString *)domain completion:(XSCompletion)completion;
 
+/**
+ *  Destroys the given room in an application
+ *
+ *  @param room        Room Name
+ *  @param application Application Name
+ *  @param domain      Domain Name
+ *  @param completion  Completion Block
+ *
+ *  @return Object of the NSURLSessionDataTask
+ */
+- (NSURLSessionDataTask *)destroyRoom:(NSString *)room fromApplication:(NSString *)application inDomain:(NSString *)domain completion:(XSCompletion)completion;
+
+
 @end

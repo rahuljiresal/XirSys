@@ -43,6 +43,11 @@ NSString * const XSErrorDomain = @"com.xirsys.error";
     return [self method:@"POST" path:path parameters:parameters completion:completion];
 }
 
+- (NSURLSessionDataTask *)deletePath:(NSString *)path parameters:(NSDictionary *)parameters completion:(XSNetworkCompletion)completion
+{
+    return [self method:@"DELETE" path:path parameters:parameters completion:completion];
+}
+
 - (NSURLSessionDataTask *)getPath:(NSString *)path parameters:(NSDictionary *)parameters completion:(XSNetworkCompletion)completion
 {
     return [self method:@"GET" path:path parameters:parameters completion:completion];
@@ -53,10 +58,10 @@ NSString * const XSErrorDomain = @"com.xirsys.error";
 - (NSURLSessionDataTask *)method:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters completion:(XSNetworkCompletion)completion
 {
     NSParameterAssert(path);
-
+    
     NSDictionary *requestParameters = [self parametersByMergingCredentials:parameters];
     NSURLRequest *request = [self requestWithPath:path parameters:requestParameters method:method];
-
+    
     NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (completion) {
             NSDictionary *response = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
@@ -70,9 +75,9 @@ NSString * const XSErrorDomain = @"com.xirsys.error";
             }
         }
     }];
-
+    
     task.priority = NSURLSessionTaskPriorityHigh;
-
+    
     return task;
 }
 
